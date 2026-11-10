@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fff8ed">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23ef6e91'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-size='46' fill='white'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E">
+  <title>Sum Smash · 창현 공주와 민수 왕자</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Gowun+Dodum&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Sum Smash home">
+        <span class="brand-mark">✦</span><span>SUM<span class="brand-light">SMASH</span></span>
+      </a>
+      <div class="top-right">
+        <span class="edition" data-i18n="edition">궁전 아케이드 · 한국어 패치</span>
+        <button id="languageButton" class="language-button" aria-label="Change language">EN <span>↗</span></button>
+      </div>
+    </header>
+
+    <main>
+      <section class="intro-row">
+        <div>
+          <p class="eyebrow" data-i18n="eyebrow">오늘의 왕실 도전</p>
+          <h1><span data-i18n="titleLine1">숫자를 모아</span><br><span class="title-accent" data-i18n="titleLine2">블록을 깨워라!</span></h1>
+          <p class="subtitle" data-i18n="subtitle">합이 목표 숫자와 딱 맞으면, 한 번에 와르르!</p>
+        </div>
+        <div class="hero-characters" aria-label="Princess Changhyun and Prince Minsu">
+          <div class="character princess"><span class="character-spark">✦</span><span class="character-emoji">👸🏻</span><span class="character-label" data-i18n="princess">창현 공주</span></div>
+          <div class="character prince"><span class="character-spark">✧</span><span class="character-emoji">🤴🏻</span><span class="character-label" data-i18n="prince">민수 왕자</span></div>
+          <div class="character-heart">♡</div>
+        </div>
+      </section>
+
+      <section class="game-layout" aria-label="Sum Smash game">
+        <div class="game-card">
+          <div class="game-topline">
+            <div class="stage-label"><span class="stage-icon">♛</span><span data-i18n="stage">스테이지</span> <b id="stageNumber">01</b></div>
+            <div class="lives" aria-label="Lives"><span class="lives-label" data-i18n="hearts">왕실의 축복</span><span id="livesDisplay" class="heart-row">♥ ♥ ♥</span></div>
+          </div>
+          <div class="board-heading">
+            <div class="target-block"><span data-i18n="targetLabel">목표 합계</span><strong id="targetValue">—</strong></div>
+            <div class="sum-block"><span data-i18n="selectedLabel">선택한 숫자</span><strong><span id="currentSum">0</span><small id="sumEquation"></small></strong></div>
+            <div class="board-tools"><button id="shuffleButton" class="icon-button" title="Shuffle blocks" aria-label="Shuffle blocks">⤨</button><button id="soundButton" class="icon-button" title="Toggle sound" aria-label="Toggle sound">♫</button></div>
+          </div>
+          <div id="board" class="block-board" role="grid" aria-label="Number blocks"></div>
+          <div class="action-row">
+            <button id="clearButton" class="clear-button" data-i18n="clear">선택 해제</button>
+            <p id="statusMessage" class="status-message" aria-live="polite" data-i18n="selectHint">숫자 블록을 골라 목표 합계를 만들어 보세요.</p>
+            <button id="smashButton" class="smash-button"><span data-i18n="smash">블록 깨기</span><span class="button-arrow">→</span></button>
+          </div>
+          <div class="game-footer"><span><kbd>Enter</kbd> <span data-i18n="smashShortcut">깨기</span></span><span><kbd>Esc</kbd> <span data-i18n="clearShortcut">선택 해제</span></span><span id="bestScore"></span></div>
+        </div>
+
+        <aside class="side-column">
+          <section class="side-card how-card">
+            <div class="side-heading"><span class="side-icon">✳</span><h2 data-i18n="howTitle">플레이 방법</h2></div>
+            <ol class="how-list">
+              <li><span>01</span><p data-i18n="how1">숫자 블록을 눌러 선택해요.</p></li>
+              <li><span>02</span><p data-i18n="how2">목표 합계와 정확히 맞춰요.</p></li>
+              <li><span>03</span><p data-i18n="how3">블록을 모두 깨고 왕실 보물을 찾아요!</p></li>
+            </ol>
+            <div class="tip-box"><span>💡</span><p data-i18n="tip">숫자 블록은 여러 개를 함께 선택할 수 있어요.</p></div>
+          </section>
+          <section class="side-card duo-card">
+            <div class="side-heading"><span class="side-icon crown-icon">♛</span><h2 data-i18n="royalTeam">왕실의 파트너</h2></div>
+            <div class="duo-row"><span class="mini-avatar pink">👸🏻</span><div><b data-i18n="princess">창현 공주</b><small data-i18n="princessRole">숫자의 지혜</small></div><span class="duo-star">✦</span></div>
+            <div class="duo-row"><span class="mini-avatar blue">🤴🏻</span><div><b data-i18n="prince">민수 왕자</b><small data-i18n="princeRole">블록의 용기</small></div><span class="duo-star">✧</span></div>
+          </section>
+          <div class="score-strip"><span>✦</span><span data-i18n="scoreLabel">획득 점수</span><b id="scoreDisplay">0000</b></div>
+        </aside>
+      </section>
+      <footer class="page-footer"><span data-i18n="footer">창현 공주와 민수 왕자의 숫자 모험</span><span>♥ <span data-i18n="footerTag">마음을 모아, 합을 맞춰!</span></span></footer>
+    </main>
+  </div>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card"><div id="modalIcon" class="modal-icon">👑</div><p class="modal-kicker" id="modalKicker">ROYAL CHALLENGE</p><h2 id="modalTitle">준비됐나요?</h2><p id="modalText">창현 공주와 민수 왕자와 함께 숫자 블록을 깨 보세요!</p><button id="modalButton" class="smash-button modal-button"><span>모험 시작</span><span class="button-arrow">→</span></button></div>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
